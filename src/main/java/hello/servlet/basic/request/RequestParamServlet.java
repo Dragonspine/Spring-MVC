@@ -23,6 +23,10 @@ import java.util.Enumeration;
 /**
  * 1. 파라미터 전송 기능
  * http://localhost:8080/request-param?username=hello&age=20
+ *
+ * get 방식 - 검색, 필터, 페이징에서 많이 사용함
+ * post html form 방식 - 회원가입, 상품주문 (PUT PATCH 방식 못씀)
+ * http message body 방식 - HTTP API(JSON) 에서 많이 씀 (POST PUT PATCH)
  */
 @WebServlet(name = "requestParamServlet", urlPatterns = "/request-param")
 public class RequestParamServlet extends HttpServlet {
