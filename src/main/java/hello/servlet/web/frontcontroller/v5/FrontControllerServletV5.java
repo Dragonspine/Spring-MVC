@@ -37,29 +37,8 @@ import java.util.Map;
 @WebServlet(name = "frontControllerServletV5", urlPatterns = "/front-controller/v5/*")
 public class FrontControllerServletV5 extends HttpServlet {
 
-    private final Map<String, Object> handlerMappingMap = new HashMap<>();
-    private final List<MyHandlerAdapter> handlerAdapters = new ArrayList<>();
-
-    public FrontControllerServletV5() {
-        initHandlerMappingMap();
-        initHandlerAdapters();
-    }
-
-    private void initHandlerAdapters() {
-        handlerAdapters.add(new ControllerV3HandlerAdapter());
-        handlerAdapters.add(new ControllerV4HandlerAdapter());
-    }
-
-    private void initHandlerMappingMap() {
-        handlerMappingMap.put("/front-controller/v5/v3/members/new-form", new MemberFormControllerV3());
-        handlerMappingMap.put("/front-controller/v5/v3/members/save", new MemberSaveControllerV3());
-        handlerMappingMap.put("/front-controller/v5/v3/members", new MemberListControllerV3());
-
-        //V4 추가
-        handlerMappingMap.put("/front-controller/v5/v4/members/new-form", new MemberFormControllerV4());
-        handlerMappingMap.put("/front-controller/v5/v4/members/save", new MemberSaveControllerV4());
-        handlerMappingMap.put("/front-controller/v5/v4/members", new MemberListControllerV4());
-    }
+    private final Map<String, Object> handlerMappingMap = new initHandler().initHandlerMappingMap();
+    private final List<MyHandlerAdapter> handlerAdapters = new initHandler().initHandlerAdapters();
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
